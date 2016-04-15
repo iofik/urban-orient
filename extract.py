@@ -47,10 +47,9 @@ def main(fname):
     streets = {}
     for el in osm.xpath("/osm/way/tag[@k='highway']/../tag[@k='name']/.."):
         s = Street(el)
-        s2 = streets.get(s.name)
-        if s2:
-            s2.update(s)
-        else:
+        try:
+            streets[s.name].update(s)
+        except KeyError:
             streets[s.name] = s
 
     for n,s in sorted(streets.items()):
