@@ -13,9 +13,9 @@ def main(fname):
         for el in osm.xpath(cls.XPath):
             o = cls(el)
             try:
-                objs[o.name].update(o)
+                objs[o].update(o)
             except KeyError:
-                objs[o.name] = o
+                objs[o] = o
 
         print('  {0}  '.format(cls.Name.upper()).center(60, '='))
         for n,o in sorted(objs.items()):

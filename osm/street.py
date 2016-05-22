@@ -25,6 +25,9 @@ class Street(object):
     def __lt__(self, other):
         return self.name < other.name
 
+    def __hash__(self):
+        return hash(self.name)
+
     def __str__(self):
         return "{s.name}  //  {s.old_name}".format(s=self) if self.old_name else self.name
 
