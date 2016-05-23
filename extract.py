@@ -4,11 +4,12 @@ import sys
 from lxml import etree
 from os.path import basename
 from osm.street import Street
+from osm.attraction import Attraction
 
 def main(fname):
     osm = etree.parse(fname)
 
-    for cls in [Street]:
+    for cls in [Street, Attraction]:
         objs = {}
         for el in osm.xpath(cls.XPath):
             o = cls(el)
